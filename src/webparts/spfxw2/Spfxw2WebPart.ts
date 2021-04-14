@@ -1,5 +1,7 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { sp } from "@pnp/sp/presets/all";   
+
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
@@ -16,7 +18,13 @@ export interface ISpfxw2WebPartProps {
 }
 
 export default class Spfxw2WebPart extends BaseClientSideWebPart<ISpfxw2WebPartProps> {
-
+  protected onInit(): Promise < void > {  
+    return super.onInit().then(_ => {  
+        sp.setup({  
+            spfxContext: this.context  
+        });  
+    });  
+}   
   public render(): void {
     const element: React.ReactElement<ISpfxw2Props> = React.createElement(
       Spfxw2,

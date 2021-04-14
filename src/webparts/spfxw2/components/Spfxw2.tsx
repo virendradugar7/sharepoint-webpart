@@ -1,12 +1,18 @@
 import * as React from 'react';
 import styles from './Spfxw2.module.scss';
+import { sp } from "@pnp/sp/presets/all"; 
+import { Web } from "@pnp/sp/webs";  
 import { ISpfxw2Props } from './ISpfxw2Props';
 import { ISpfxw2State } from './ISpfxw2State';
 import { escape } from '@microsoft/sp-lodash-subset';
 import {operations} from "../Services/Services";
 import {BaseButton, Dropdown, IDropdownOption} from 'office-ui-fabric-react'
+export interface IDataFromOtherScState {  
+  listItems: any;  
+} 
 export default class Spfxw2 extends React.Component<ISpfxw2Props,ISpfxw2State, {}> {
- public op:operations;
+ 
+  public op:operations;
  public selectedtitle:string;
   constructor(props:ISpfxw2Props){
       super(props);
@@ -34,9 +40,9 @@ this.selectedtitle=data.text;
             </div>
             <div id="parent" className={styles.mystyles}>
               <Dropdown options={this.state.optionslist}  className={styles.dropdown} onChange={this.getListTitle} placeholder="select list"></Dropdown>
-           <BaseButton className={styles.mybutton} text="create list item" onClick={()=>this.op.CreateListItem(this.props.context,this.selectedtitle)}></BaseButton>
-           <BaseButton className={styles.mybutton} text="update list item" onClick={()=>this.op.UpdateListItem(this.props.context,this.selectedtitle)}></BaseButton>
-           <BaseButton className={styles.mybutton} text="delete list item" onClick={()=>this.op.DeleteListItem(this.props.context,this.selectedtitle)}></BaseButton>
+           <BaseButton className={styles.mybutton} text="create list item" onClick={()=>this.op.CreateListItem(this.selectedtitle)}></BaseButton>
+           <BaseButton className={styles.mybutton} text="update list item" onClick={()=>this.op.UpdateListItem(this.selectedtitle)}></BaseButton>
+           <BaseButton className={styles.mybutton} text="delete list item" onClick={()=>this.op.DeleteListItem(this.selectedtitle)}></BaseButton>
           </div>
           </div>
         </div>
