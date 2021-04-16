@@ -1,6 +1,8 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from "@microsoft/sp-http";
 import { IDropdownOption } from "office-ui-fabric-react";
+// import{ISearchResult} from '../components/ISearchResult'
+// import {ISearchResults} from '../components/sharepointRespnse'
 export class operations {
 
     public GetAllList(context: WebPartContext): Promise<IDropdownOption[]> {
@@ -85,4 +87,37 @@ const body:string=JSON.stringify({Title:"updated item"})
         });
 
     }
+//     public searchget(context: WebPartContext, listoption: string,searchquery: string): Promise<ISearchResult[]>{
+//         // console.log(context.pageContext.web.absoluteUrl +"/_api/search/query?querytext='"+searchquery+"'&selectedProperties='Title''")
+       
+//         // let restApiUrl: string = context.pageContext.web.absoluteUrl +"/_api/search/query?querytext='"+searchquery+"'&selectedProperties='Title''",enablefql=true;
+//         let restApiUrl: string = context.pageContext.web.absoluteUrl +"/_api/search/query"
+//     return context.spHttpClient.get(restApiUrl,SPHttpClient.configurations.v1,{
+//         headers:{
+//             'Aceept':'application/JSON;odata=nometadata',
+//             'odata-version':''
+//         }
+//     }).then((response:SPHttpClientResponse)=>{
+//  console.log(response.json())
+//         return response.json();
+//     })
+//     .then((responseJSON:ISearchResults)=>{
+//         var result:ISearchResult[]=[];
+//         var responseItems=responseJSON.PrimaryQueryResult.RelevantResults.Table.Rows;
+//         for(let res of responseItems){
+//             result.push({
+//                 Title:res.Cells[2].Value,
+//                 ModifiedBy:res.Cells[4].Value.split('|')[1],
+//             });
+//         }
+//         console.log(result)
+//         return result;
+      
+//     })
+//     .catch((response:SPHttpClientResponse)=>{
+//         return [];
+//     })
+    
+    
+//     }
 }
